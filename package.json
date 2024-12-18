@@ -1,0 +1,23 @@
+{
+  "name": "ethereum_gas_notifier_backend",
+  "version": "1.0.0",
+  "description": "Backend for the Ethereum Gas Notifier extension",
+  "main": "server.js",
+  "scripts": {
+    "build": "npx tsc",
+    "start": "node dist/server.js",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/server.js\""
+  },
+  "author": "kyrers",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.2",
+    "concurrently": "^9.1.0",
+    "nodemon": "^3.1.9",
+    "typescript": "^5.7.2"
+  }
+}
