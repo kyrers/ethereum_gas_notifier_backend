@@ -5,10 +5,8 @@ dotenv.config();
 
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
 const ETHERSCAN_API_URL = `https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=${ETHERSCAN_API_KEY}`;
-const PORT = process.env.PORT || 3000;
 
 const app: Express = express();
-
 app.use(express.json());
 
 app.get("/gasPrices", async (_, res: Response) => {
@@ -33,6 +31,11 @@ app.get("/gasPrices", async (_, res: Response) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Server running locally on port ${PORT}`);
+  });
+}
+
+export default app;
